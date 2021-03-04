@@ -1,2 +1,13 @@
 server:
-  port: 8089
+  port: 9007
+
+spring:
+  thymeleaf:
+    cache: true
+#  datasource:
+#    url: jdbc:mysql://localhost:3000/was
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+

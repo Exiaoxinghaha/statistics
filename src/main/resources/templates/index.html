@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
+<head>
+    <meta charset="UTF-8">
+    <title>办件量&好差评</title>
+    <link th:href="@{/layui/css/layui.css}" rel="stylesheet">
+</head>
+<body>
+    <!--<i class="layui-icon layui-icon-face-smile" style="font-size: 30px; color: #1E9FFF;"></i>-->
+    <!--<i class="layui-icon layui-icon-export" style="font-size: 30px; color: #1E9FFF;"></i>-->
+    <!--<i class="layui-icon layui-icon-refresh" style="font-size: 30px; color: #1E9FFF;"></i>-->
+    <!--<i class="layui-icon layui-icon-help" style="font-size: 30px; color: #1E9FFF;"></i>-->
+    <!--<i class="layui-icon layui-icon-print" style="font-size: 30px; color: #1E9FFF;"></i>-->
+    <!--<div class="layui-anim layui-anim-up">-->
+        <!--<button type="button" class="layui-btn">一个标准的按钮</button>-->
+        <!--<a href="http://www.layui.com" class="layui-btn">一个可跳转的按钮</a>-->
+    <!--</div>-->
+    <!--<div class="layui-anim layui-anim-scale" style="width: 400px">-->
+        <!--<div>办件量</div>-->
+        <!--<table id="demo" lay-filter="test"></table>-->
+    <!--</div>-->
+    <div class="layui-tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this">办件量</li>
+            <li>好差评</li>
+            <li>好评率</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="layui-anim layui-anim-scaleSpring" style="width: 800px">
+                    <table id="demo" lay-filter="test"></table>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-anim layui-anim-scaleSpring" style="width: 800px">
+                        <table id="demo1" lay-filter="test"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-tab-item">
+                <div class="layui-tab-item layui-show">
+                    <div class="layui-anim layui-anim-scaleSpring" style="width: 800px">
+                        <table id="demo2" lay-filter="test"></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+    layui.use(['layer', 'form', 'table', 'element'], function () {
+        var layer = layui.layer,
+            form = layui.form,
+            table = layui.table;
+        // layer.alert('Hello World')
+        table.render({
+                elem: '#demo'
+                ,height: 600
+                ,url: '/statistics/v1/number'
+                ,page: true
+                ,cols: [
+                    [
+                    {field: 'deptname', title: '部门', width: 400, sort: true, align: 'center'}
+                    ,{field: 'number', title: '办件量', width: 400, sort: true, align: 'center' }
+            ]
+            ]
+        });
+
+        table.render({
+            elem: '#demo1'
+            ,height: 600
+            ,url: '/statistics/v1/haochaping'
+            ,page: true
+            ,cols: [
+                [
+                    {field: 'deptname', title: '部门', width: 400, sort: true, align: 'center'}
+                    ,{field: 'number', title: '评价数', width: 400, sort: true, align: 'center' }
+                ]
+            ]
+        });
+
+        table.render({
+            elem: '#demo2'
+            ,height: 600
+            ,url: '/statistics/v1/baifenbi'
+            ,page: true
+            ,cols: [
+                [
+                    {field: 'deptname', title: '部门', width: 400, sort: true, align: 'center'}
+                    ,{field: 'number', title: '好评率', width: 400, sort: true, align: 'center' }
+                ]
+            ]
+        });
+    });
+
+
+</script>
+</body>
+</html>
